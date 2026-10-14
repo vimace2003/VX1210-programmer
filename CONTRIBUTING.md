@@ -54,8 +54,9 @@ then `npm run smoke -w @ce42/desktop` (on headless Linux: `xvfb-run -a npm run s
 
 1. Set the version in `apps/desktop/package.json` (the product version shown in the app).
 2. Move the *Unreleased* notes in `CHANGELOG.md` under the new version.
-3. Commit, then `git tag vX.Y.Z && git push origin main vX.Y.Z`.
-4. The *Release* workflow builds and smoke-tests Windows, macOS and Linux packages and creates a
+3. Open a pull request with these changes; `main` only accepts pull requests that pass CI.
+4. After merging, tag the merge commit: `git switch main && git pull && git tag -a vX.Y.Z -m "CE42 Next X.Y.Z" && git push origin vX.Y.Z`.
+5. The *Release* workflow builds and smoke-tests Windows, macOS and Linux packages and creates a
    **draft** release with checksums. Review it and press *Publish*; that also deploys the web app
    to GitHub Pages.
 
