@@ -1,0 +1,44 @@
+name: Real radio test report
+description: Report a read/write against a real VX-1210 (successful or not)
+labels: [radio-test]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The clone protocol was recovered from CE42 and validated against a simulator. Reports from real
+        radios are the most valuable contribution right now — successes included.
+        Recommended order: **read** the radio, save the `.C42`, open it in the original CE42 and compare.
+        Only then try a **write**.
+  - type: input
+    id: version
+    attributes:
+      label: CE42 Next version
+    validations:
+      required: true
+  - type: input
+    id: radio
+    attributes:
+      label: Radio
+      description: Model/version as shown in the Radio tab, and firmware if known.
+      placeholder: VX-1210, version …
+    validations:
+      required: true
+  - type: input
+    id: setup
+    attributes:
+      label: Operating system and cable
+      placeholder: Windows 11, SVC-1200 on COM3
+  - type: checkboxes
+    id: results
+    attributes:
+      label: Results
+      options:
+        - label: Read from radio worked
+        - label: File read by CE42 Next opens correctly in the original CE42
+        - label: Write to radio worked
+        - label: Radio works normally after the write (channels, settings, transmit power)
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Anything that differed from the original CE42, error messages, timings.

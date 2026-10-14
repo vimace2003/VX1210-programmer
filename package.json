@@ -1,0 +1,32 @@
+{
+  "name": "ce42-next",
+  "private": true,
+  "description": "Modern, open re-implementation of the Vertex Standard CE42 programming software for the VX-1210 HF transceiver",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/vimace2003/VX1210-programmer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vimace2003/VX1210-programmer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vimace2003/VX1210-programmer/issues"
+  },
+  "author": "PP5KJ <contato@pp5kj.com>",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "npm run test -w @ce42/core && npm run test -w @ce42/web",
+    "typecheck": "npm run typecheck -w @ce42/core && npm run typecheck -w @ce42/web",
+    "dev": "npm run dev -w @ce42/web --",
+    "build": "npm run build -w @ce42/web",
+    "preview": "npm run preview -w @ce42/web --",
+    "desktop": "npm run build -w @ce42/web && npm run start -w @ce42/desktop",
+    "dist:desktop": "npm run build -w @ce42/web && npm run dist -w @ce42/desktop"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

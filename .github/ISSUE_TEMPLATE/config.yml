@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issue
+    url: https://github.com/vimace2003/VX1210-programmer/security/advisories/new
+    about: Report vulnerabilities privately, not in a public issue.

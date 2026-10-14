@@ -1,0 +1,22 @@
+{
+  "name": "@ce42/core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VX-1210 memory map, .C42 file codec and clone protocol (transport-agnostic)",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.4"
+  }
+}

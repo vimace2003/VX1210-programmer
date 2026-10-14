@@ -1,0 +1,49 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report! Português, español and русский are welcome too.
+        **Do not attach `.C42` files or screenshots that show frequencies or selcall IDs you must keep private.**
+  - type: input
+    id: version
+    attributes:
+      label: CE42 Next version
+      description: Shown on the start screen and in the Radio tab ("Ver x.y.z").
+      placeholder: 0.3.0
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Where does it run?
+      options:
+        - Windows (installer)
+        - Windows (portable)
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+        - Linux (AppImage)
+        - Linux (.deb)
+        - Web app (Chrome/Edge)
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system and version
+      placeholder: Windows 11 24H2 / macOS 15.3 / Ubuntu 24.04
+  - type: input
+    id: cable
+    attributes:
+      label: Programming cable / USB-serial adapter
+      description: Only if the problem involves the radio.
+      placeholder: SVC-1200, FTDI FT232R, CH340, …
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Steps to reproduce, what you expected, what you saw (error messages verbatim).
+    validations:
+      required: true

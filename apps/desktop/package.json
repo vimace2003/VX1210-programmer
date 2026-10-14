@@ -1,0 +1,142 @@
+{
+  "name": "@ce42/desktop",
+  "productName": "CE42 Next",
+  "version": "0.3.0",
+  "private": true,
+  "description": "CE42 Next - programação do transceptor HF VX-1210",
+  "author": {
+    "name": "PP5KJ",
+    "email": "contato@pp5kj.com"
+  },
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/vimace2003/VX1210-programmer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vimace2003/VX1210-programmer.git"
+  },
+  "main": "main.cjs",
+  "scripts": {
+    "icon": "node scripts/make-icon.mjs",
+    "renderer": "node scripts/copy-renderer.mjs",
+    "start": "npm run renderer && electron .",
+    "dist": "npm run clean && npm run renderer && electron-builder --publish never",
+    "smoke": "node scripts/smoke-test.mjs",
+    "clean": "node scripts/clean.mjs"
+  },
+  "devDependencies": {
+    "electron": "44.7.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "br.ce42next.vx1210",
+    "productName": "CE42 Next",
+    "copyright": "© 2026 PP5KJ — GPL-3.0-or-later",
+    "electronVersion": "44.7.0",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "renderer/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "asar": true,
+    "npmRebuild": false,
+    "electronFuses": {
+      "runAsNode": false,
+      "enableCookieEncryption": true,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CE42 Next",
+      "installerLanguages": [
+        "pt_BR",
+        "en_US",
+        "es_ES",
+        "ru_RU"
+      ],
+      "multiLanguageInstaller": true,
+      "artifactName": "CE42-Next-Setup-${version}.exe"
+    },
+    "portable": {
+      "artifactName": "CE42-Next-${version}-portable.exe"
+    },
+    "mac": {
+      "icon": "build/icon.png",
+      "category": "public.app-category.utilities",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "identity": "-",
+      "hardenedRuntime": false,
+      "artifactName": "CE42-Next-${version}-mac-${arch}.${ext}"
+    },
+    "dmg": {
+      "title": "CE42 Next ${version}"
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "category": "Utility",
+      "executableName": "ce42-next",
+      "synopsis": "VX-1210 HF transceiver programmer",
+      "maintainer": "PP5KJ <contato@pp5kj.com>",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "appImage": {
+      "artifactName": "CE42-Next-${version}-linux-${arch}.${ext}"
+    },
+    "deb": {
+      "packageName": "ce42-next",
+      "artifactName": "ce42-next_${version}_${arch}.${ext}"
+    }
+  }
+}
